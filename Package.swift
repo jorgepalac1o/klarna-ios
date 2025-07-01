@@ -21,13 +21,12 @@ let package = Package(
             dependencies: [
                 .target(
                     name: "KlarnaMobileSDK",
-                    condition: .when(platforms: [.iOS, .macCatalyst, .macOS, .tvOS]
+                    condition: .when(platforms: [.iOS, .macCatalyst, .macOS, .tvOS]),
                 ),
                 .target(
                     name: "KlarnaCore",
-                    condition: .when(platforms: [.iOS, .macCatalyst, .macOS, .tvOS]
+                    condition: .when(platforms: [.iOS, .macCatalyst, .macOS, .tvOS]),
                 ),
-            )
         ]),
         .binaryTarget(
             name: "KlarnaMobileSDK",

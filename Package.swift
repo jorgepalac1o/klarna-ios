@@ -7,10 +7,28 @@ let package = Package(
     products: [
         .library(
             name: "KlarnaMobileSDK",
-            targets: ["KlarnaMobileSDK"]),
+            targets: ["KlarnaMobileSDKInternal"]
+        ),
+        .library(
+            name: "KlarnaPayments",
+            targets: ["KlarnaCore"]
+        ),
     ],
     dependencies: [],
     targets: [
+        .target(
+            name: "KlarnaMobileSDKInternal",
+            dependencies: [
+                .target(
+                    name: "KlarnaMobileSDK",
+                    condition: .when(platforms: [.iOS, .macCatalyst, .macOS, .tvOS]
+                ),
+                .target(
+                    name: "KlarnaCore",
+                    condition: .when(platforms: [.iOS, .macCatalyst, .macOS, .tvOS]
+                ),
+            )
+        ]),
         .binaryTarget(
             name: "KlarnaMobileSDK",
             url: "https://github.com/jorgepalac1o/klarna-ios/releases/download/3.0.0/KlarnaMobileSDK.xcframework.zip",
